@@ -1,66 +1,39 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from '../components/Hero';
+import Agenda from '../components/Agenda';
+import Venue from '../components/Venue';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      {/* 1. Hero Banner */}
+      <Hero />
+
+      {/* 2. Lịch trình sự kiện */}
+      <Agenda />
+
+      {/* 3. Địa điểm & Bản đồ */}
+      <Venue />
+
+      {/* 4. Footer thương hiệu */}
+      <footer style={{
+        padding: '3rem 2rem',
+        backgroundColor: '#07080a',
+        textAlign: 'center',
+        borderTop: '1px solid var(--color-border)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+        alignItems: 'center'
+      }}>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          <span style={{ color: 'var(--color-primary)', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-1.5px' }}>3M</span>
+          <span style={{ color: 'var(--color-border)', fontSize: '1.2rem' }}>|</span>
+          <span style={{ fontWeight: 800, fontSize: '1rem', color: '#FFF', letterSpacing: '1.5px' }}>365GROUP</span>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.85rem' }}>
+          © {new Date().getFullYear()} 365Group. Bảo lưu mọi quyền.
+        </p>
+      </footer>
+    </main>
   );
 }

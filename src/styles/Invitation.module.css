@@ -1,0 +1,114 @@
+.invitationSection {
+  padding: 5rem 2rem;
+  background-color: #0A0B0E;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+}
+
+.title {
+  font-family: var(--font-family-headings);
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title span {
+  color: var(--color-primary);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+  padding: 3rem;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.messageContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.salutation {
+  font-family: var(--font-family-headings);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.letterBody {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.letterBody p {
+  margin-bottom: 1rem;
+}
+
+.letterBody p:last-child {
+  margin-bottom: 0;
+}
+
+.signatureArea {
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+}
+
+.name {
+  font-family: var(--font-family-headings);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.role {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .imageWrapper {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}

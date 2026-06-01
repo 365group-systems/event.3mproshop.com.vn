@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI Agent Context
+.agent/
+.brain/
+.maestro.md
+
+# Scratch scripts
+scratch/
+
+# Data storage (credentials/sensitive logs)
+data/registrations.json
+data/*.json
+
