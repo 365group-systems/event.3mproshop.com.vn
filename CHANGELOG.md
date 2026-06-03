@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-06-03]
+
+### Fixed
+- Sửa lỗi căn giữa (.mx-auto) bị mất do cơ chế cascade layers của Tailwind v4: wrap bộ CSS reset vào `@layer base` trong `globals.css`.
+- Khắc phục lỗi build thất bại trên môi trường production do tự kích hoạt Turbopack bằng cách cập nhật lệnh build trong `package.json` sang `next build --webpack`.
+- Sửa lại nội dung và text thương hiệu footer đồng bộ thành **3M | PROSHOP**.
+
 ## [2026-06-02]
 
 ### Added
