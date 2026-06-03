@@ -1,7 +1,47 @@
-import Image from 'next/image';
-import styles from '../styles/Hero.module.css';
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import styles from "../styles/Hero.module.css";
+
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    setMounted(true);
+    
+    const targetDate = new Date("2026-06-20T16:00:00").getTime();
+
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className={styles.hero}>
       {/* Background Image Container */}
@@ -18,9 +58,9 @@ export default function Hero() {
       <div className={styles.content}>
         {/* Brand Logos */}
         <div className={styles.brandLogos}>
-          <h2 style={{ color: 'var(--color-primary)', fontWeight: 900, fontSize: '1.8rem', letterSpacing: '-1px' }}>3M</h2>
+          <h2 style={{ color: "var(--color-primary)", fontWeight: 900, fontSize: "1.8rem", letterSpacing: "-1px" }}>3M</h2>
           <div className={styles.divider}></div>
-          <h2 style={{ fontWeight: 800, fontSize: '1.2rem', color: '#FFF', letterSpacing: '1px' }}>365GROUP</h2>
+          <h2 style={{ fontWeight: 800, fontSize: "1.2rem", color: "#FFF", letterSpacing: "1px" }}>PROSHOP</h2>
         </div>
 
         {/* Titles */}
@@ -73,6 +113,30 @@ export default function Hero() {
             <span className={styles.detailValue}>365Group Building, Thủ Đức</span>
           </div>
         </div>
+
+        {/* Countdown Timer */}
+        {mounted && (
+          <div className="grid grid-cols-4 gap-2 md:gap-3 max-w-sm mx-auto my-6 bg-black/40 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/5 shadow-[0_0_20px_rgba(255,0,0,0.1)]">
+            <div className="flex flex-col items-center p-1.5 md:p-2 rounded-lg bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+              <span className="text-xl md:text-2xl font-extrabold text-white font-mono tracking-tight">{String(timeLeft.days).padStart(2, "0")}</span>
+              <span className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Ngày</span>
+            </div>
+            <div className="flex flex-col items-center p-1.5 md:p-2 rounded-lg bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+              <span className="text-xl md:text-2xl font-extrabold text-[#FF0000] font-mono tracking-tight">{String(timeLeft.hours).padStart(2, "0")}</span>
+              <span className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Giờ</span>
+            </div>
+            <div className="flex flex-col items-center p-1.5 md:p-2 rounded-lg bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+              <span className="text-xl md:text-2xl font-extrabold text-white font-mono tracking-tight">{String(timeLeft.minutes).padStart(2, "0")}</span>
+              <span className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Phút</span>
+            </div>
+            <div className="flex flex-col items-center p-1.5 md:p-2 rounded-lg bg-gradient-to-b from-[#FF0000]/10 to-transparent border border-[#FF0000]/10">
+              <span className="text-xl md:text-2xl font-extrabold text-[#FF0000] font-mono tracking-tight">
+                {String(timeLeft.seconds).padStart(2, "0")}
+              </span>
+              <span className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Giây</span>
+            </div>
+          </div>
+        )}
 
         {/* CTA Button */}
         <a href="#agenda" className={styles.ctaButton}>

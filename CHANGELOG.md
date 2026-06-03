@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-06-02]
+
+### Added
+- Upgraded the styling setup to **Tailwind CSS v4** alongside existing Vanilla CSS.
+- Configured `@tailwindcss/postcss` and added root-relative `@source` scanner directives for app and components folders in `globals.css`.
+- Extracted and optimized high-resolution 3D showroom layout assets from the proposal PDF to `public/images/extracted/` via custom Python script.
+- Placed real, context-accurate 3D assets in corresponding event timeline components.
+
+### Changed
+- Converted countdown timer inside `<Hero />` to utilize client-side mounting state to resolve Next.js SSR hydration errors.
+- Adjusted Next.js dev server script to force Webpack configuration (`--webpack`), resolving EPERM filesystem locking crashes under Windows Laragon environments.
+
 ## [2026-06-01]
 
 ### Added
