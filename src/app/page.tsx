@@ -1,9 +1,11 @@
 import Hero from "@/components/Hero";
 import Venue from "@/components/Venue";
+import EventGate from "@/components/EventGate";
 
 export default function Home() {
   return (
-    <main className="bg-[#0F0F0F] text-white font-sans min-h-screen">
+    <EventGate>
+      <main className="bg-[#0F0F0F] text-white font-sans min-h-screen">
       <Hero />
 
       {/* Timeline Section */}
@@ -162,6 +164,7 @@ export default function Home() {
           © {new Date().getFullYear()} 3M Pro Shop. Bảo lưu mọi quyền.
         </p>
       </footer>
-    </main>
+      </main>
+    </EventGate>
   );
 }
