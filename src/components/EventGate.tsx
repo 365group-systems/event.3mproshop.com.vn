@@ -50,6 +50,9 @@ function CountdownUnit({
 }
 
 export default function EventGate({ children }: { children: ReactNode }) {
+  // Mở tạm thời trang bằng cách bỏ qua màn hình chờ countdown
+  return <>{children}</>;
+
   const [open, setOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => ({
     days: 0,
